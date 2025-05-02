@@ -99,8 +99,7 @@ public class HomeScreen {
             System.out.println("C) Current Year");
             System.out.println("D) Previous Year");
             System.out.println("E) Search by Vendor");
-            System.out.println("F) Custom Search (Coming Soon)");
-            System.out.println("G) Return to Ledger Menu");
+            System.out.println("F) Return to Ledger Menu");
             System.out.print("Select an option: ");
 
             String choice = scanner.nextLine().trim().toUpperCase();
@@ -122,9 +121,6 @@ public class HomeScreen {
                     searchByVendor(transactions, scanner);
                     break;
                 case "F":
-                    System.out.println("Custom search is under development.");
-                    break;
-                case "G":
                     viewingReports = false; // Exit report menu
                     break;
                 default:
@@ -140,6 +136,9 @@ public class HomeScreen {
         System.out.print("Enter Vendor Name: ");
         String vendor = scanner.nextLine().trim();
 
+        System.out.println("Enter description:");
+        String description = scanner.nextLine().trim();
+
         System.out.print("Enter Amount: ");
         double amount = Double.parseDouble(scanner.nextLine().trim());
 
@@ -150,7 +149,7 @@ public class HomeScreen {
 
         // Create a deposit transaction (positive amount)
         Transaction deposit = new Transaction(
-                LocalDate.now(), LocalTime.now(), "Deposit", vendor, amount);
+                LocalDate.now(), LocalTime.now(), description, vendor, amount);
 
         // Save to file and memory
         TransactionFileManager.appendTransaction(deposit);
@@ -166,6 +165,9 @@ public class HomeScreen {
         System.out.print("Enter Vendor Name: ");
         String vendor = scanner.nextLine().trim();
 
+        System.out.println("Enter description:");
+        String description = scanner.nextLine().trim();
+
         System.out.print("Enter Amount: ");
         double amount = Double.parseDouble(scanner.nextLine().trim());
 
@@ -178,7 +180,7 @@ public class HomeScreen {
 
         // Create a payment transaction (negative amount)
         Transaction payment = new Transaction(
-                LocalDate.now(), LocalTime.now(), "Payment", vendor, amount);
+                LocalDate.now(), LocalTime.now(), description, vendor, amount);
 
         // Save to file and memory
         TransactionFileManager.appendTransaction(payment);
@@ -272,7 +274,7 @@ public class HomeScreen {
 
     // Utility method to print a formatted transaction
     private static void printTransaction(Transaction t) {
-        System.out.printf("Date: %s | Time: %s | Type: %s | Vendor: %s | Amount: $%.2f%n",
+        System.out.printf("Date: %s | Time: %s | Description: %s | Vendor: %s | Amount: $%.2f%n",
                 t.getDate(), t.getTime(), t.getDescription(), t.getVendor(), t.getAmount());
     }
 
