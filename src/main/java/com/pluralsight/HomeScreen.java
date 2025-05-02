@@ -136,7 +136,7 @@ public class HomeScreen {
         System.out.print("Enter Vendor Name: ");
         String vendor = scanner.nextLine().trim();
 
-        System.out.println("Enter description:");
+        System.out.print("Enter Description:");
         String description = scanner.nextLine().trim();
 
         System.out.print("Enter Amount: ");
@@ -165,7 +165,7 @@ public class HomeScreen {
         System.out.print("Enter Vendor Name: ");
         String vendor = scanner.nextLine().trim();
 
-        System.out.println("Enter description:");
+        System.out.print("Enter description:");
         String description = scanner.nextLine().trim();
 
         System.out.print("Enter Amount: ");
